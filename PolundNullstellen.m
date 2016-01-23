@@ -28,32 +28,32 @@ s=tf('s');
 %---------------------------------------
 % Tiefpass mit qp=Güte, wp=Polfrequenz 
 %---------------------------------------
-% qp=1;
-% wp=1e3;
-% k=1;
-% T=(k*wp+s^2)*s/(s^2+wp/qp*s+wp^2+s^3);
+qp=1.3;
+wp=1e3;
+k=1;
+T=(k*wp+s^2)*s/(s^2+wp/qp*s+wp^2+s^3 +(s^4)/wp);
 
 %---------------------------------------
 % Butterworthtiefpass mit Filtergrad n und wdB-Frequenz
 %---------------------------------------
-%n=3;
-%wdB=2*pi*10e6;
-%T=1/(1+((s)/wdB)^(2*n));
+% n=3;
+% wdB=2*pi*10e6;
+% T=1/(1+((s)/wdB)^(n));
 
 %---------------------------------------
 % Butterworthhochpass mit Filtergrad n und wdB-Frequenz
 %---------------------------------------
-%n=2;
-%wdB=2*pi*10e6;
-%T=((s)/wdB)^(2*n)/(1+((s)/wdB)^(2*n));
+% n=1;
+% wdB=2*pi*10e6;
+% T=((s)/wdB)^(n)/(1+((s)/wdB)^(n));
 
 %---------------------------------------
 % Butterworthhochpass mit Filtergrad n und wdB-Frequenz
 % und 2 Polstellen
 %---------------------------------------
-n=1;
-wdB=1;
-T=((s)/wdB)^(2*n)/(1+(s/wdB)+((s)/wdB)^(2*n));
+% n=1;
+% wdB=1;
+% T=((s)/wdB)^(2*n)/(1+(s/wdB)+((s)/wdB)^(2*n));
 
 %*************************************************
 % Auswertung des Filters
@@ -65,8 +65,7 @@ figure('Name','Pol und Nullstellen von Filtern','NumberTitle','off',...         
 % Bodediagramm
 subplot(2,2,1);
 bode(T);
-grid on;
-hold on;
+grid on
 
 % Pole und Nullstellen
 subplot(2,2,2);
